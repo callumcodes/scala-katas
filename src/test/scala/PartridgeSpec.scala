@@ -47,4 +47,37 @@ class PartridgeSpec extends FlatSpec with Matchers {
   it should "say 'Mine's a pint!!' for two related terms" in {
     Partridge.chat(List("AlphaPapa", "Partridge")) shouldBe "Mine's a Pint!!"
   }
+
+  it should "say 'Mine's a pint!!!' for three related terms" in {
+    Partridge.chat(List("AlphaPapa", "Partridge", "Lynn")) shouldBe "Mine's a Pint!!!"
+  }
+
+  it should "say 'Mine's a pint!!!!' for four related terms" in {
+    Partridge.chat(List("AlphaPapa", "Partridge", "Lynn", "Dan")) shouldBe "Mine's a Pint!!!!"
+  }
+
+  it should "say 'Mine's a pint!! for two related terms and one unrelated term" in {
+    Partridge.chat(List("Chat", "with", "Partridge")) shouldBe "Mine's a Pint!!"
+    Partridge.chat(List("Partridge", "book", "Nomad")) shouldBe "Mine's a Pint!!"
+  }
+
+  it should "say 'Mine's a pint!!! for three related terms and and many unrelated terms" in {
+    Partridge.chat(List(
+      "Following",
+      "the",
+      "success",
+      "of",
+      "the",
+      "movie",
+      "AlphaPapa",
+      "Alan",
+      "Partridge",
+      "has",
+      "a",
+      "new",
+      "book",
+      "called",
+      "Nomad"
+    )) shouldBe "Mine's a Pint!!!"
+  }
 }
