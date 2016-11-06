@@ -1,6 +1,6 @@
 object Partridge {
 
-  val alanRelatedTerms = List(
+  private val alanRelatedTerms = List(
     "Partridge",
     "PearTree",
     "Chat",
@@ -13,11 +13,12 @@ object Partridge {
 
   def chat(words: List[String] = List()): String = {
 
-    val matchedTerms = words.intersect(alanRelatedTerms)
+    val matchedTerms = words.filter(alanRelatedTerms.contains)
 
     if(matchedTerms.nonEmpty)
       "Mine's a Pint" + "!" * matchedTerms.length
     else
       "Lynn, I've pierced my foot on a spike!!"
+
   }
 }

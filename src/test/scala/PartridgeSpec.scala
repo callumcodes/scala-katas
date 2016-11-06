@@ -80,4 +80,8 @@ class PartridgeSpec extends FlatSpec with Matchers {
       "Nomad"
     )) shouldBe "Mine's a Pint!!!"
   }
+
+  it should "Duplicate terms should produce extra !'s" in {
+    Partridge.chat(List("Partridge", "Partridge", "Partridge")) shouldBe "Mine's a Pint!!!"
+  }
 }
