@@ -1,4 +1,4 @@
-name := "medihealth-kata"
+name := "kata-name-here"
 
 version := "0.1"
 
