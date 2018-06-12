@@ -1,4 +1,4 @@
-name := "kata-name-here"
+name := "bowling-game-kata"
 
 version := "0.1"
 
