@@ -33,4 +33,17 @@ class BowlingSpec extends FlatSpec with Matchers with Checkers {
     }
   }
 
+  it should "add a bonus equal to the next roll after a spare occurs" in {
+    val games = List(
+      List(Frame(1, 9), Frame(5, 3)) -> 23, // (10 + 5) + 8 = 23
+      List(Frame(1, 9), Frame(0, 3)) -> 13, // (10 + 0) + 3 = 18
+      List(Frame(1, 5), Frame(5, 3), Frame(6, 4), Frame(9, 0)) -> 42, // 6 + 8 + (10 + 9) + 9 = 42
+      List(Frame(1, 5), Frame(5, 3), Frame(6, 4), Frame(9, 1)) -> 43 // 6 + 8 + (10 + 9) + (10 + 0) = 43
+    )
+    games.foreach {
+      case (game, result) => Bowling.score(game) shouldBe result
+    }
+  }
+
+
 }
