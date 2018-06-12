@@ -9,7 +9,7 @@ class FrameSpec extends FlatSpec with Matchers with Checkers {
   val notTenGen = (for {
     first <- Gen.choose(0, 10)
     second <- Gen.choose(0, 10)
-  } yield Frame(first, second)) suchThat (f => f.first + f.second != 10)
+  } yield Frame(first, second)) suchThat (_.total != 10)
 
   "isSpare" should "be true when the total score is 10" in {
     (0 to 10).zip(10 to 0 by -1).foreach {
