@@ -11,7 +11,7 @@ class FrameSpec extends FlatSpec with Matchers with Checkers {
     second <- Gen.choose(0, 10)
   } yield Frame(first, second)
 
-  val notTenGen = frameGen suchThat (_.total != 10)
+  val notTenGen = frameGen suchThat (f => f.total != 10 && f.first != 10)
 
   val notStrike = frameGen suchThat (_.first != 10)
 

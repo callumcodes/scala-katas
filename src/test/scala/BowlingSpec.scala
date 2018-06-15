@@ -53,9 +53,12 @@ class BowlingSpec extends FlatSpec with Matchers with Checkers {
     runGames(
       List(Frame(10, 0), Frame(5, 3)) -> 26, // (10 + 5 + 3) + 8 = 26
       List(Frame(0, 0), Frame(10, 0)) -> 10, // 0 + (10 + 0 + 0) = 10
-      List(Frame(10, 0), Frame(1, 9)) -> 30 // (10, 1 + 9) + (10 + 0) = 30 - Spare after Strike
+      List(Frame(10, 0), Frame(1, 9)) -> 30, // (10, 1 + 9) + (10 + 0) = 30 - Spare after Strike
+      List(Frame(10, 0), Frame(10, 0), Frame(5, 5)) -> 55, // (10 + 10 + 5) + (10 + 5 + 5) + 10  - Double
+      List.fill(5)(Frame(10, 0)) -> 120 // (10 + 10 + 10) + (10 + 10 + 10) + (10 + 10 + 10) + (10 + 10 + 10) + 10 - "High Five"
     )
   }
+
 
 
 }
