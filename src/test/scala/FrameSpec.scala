@@ -31,4 +31,8 @@ class FrameSpec extends FlatSpec with Matchers with Checkers {
     Frame(10, 0).bonus shouldBe Strike
   }
 
+  it should "include the final throw in the total" in {
+    Frame(10, 5, Some(5)).total shouldBe 20
+  }
+
 }

@@ -1,10 +1,10 @@
 package domain
 
-case class Frame(first: Int, second: Int) {
+case class Frame(first: Int, second: Int, third: Option[Int] = None) {
 
   import Frame._
 
-  val total: Int = first + second
+  val total: Int = first + second + third.getOrElse(0)
 
   val bonus: FrameBonus = (first, second) match {
     case (MAX_PINS, _) => Strike

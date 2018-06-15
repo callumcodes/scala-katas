@@ -59,6 +59,54 @@ class BowlingSpec extends FlatSpec with Matchers with Checkers {
     )
   }
 
+  it should  "calculate the final frame correctly" in {
+    runGames(
+      List(Frame(2, 2, None)) -> 4, // 2 + 2
+      List(Frame(5, 5, Some(10))) -> 20, // 10 + 10
+      List(Frame(10, 10, Some(10))) -> 30, // 10 + 10 + 10
+      List(Frame(10, 10, Some(0))) -> 20 // 10 + 10 + 0
+    )
+  }
+
+  it should "handle a strike before the final frame correctly" in {
+    runGames(
+      List(Frame(10, 0), Frame(10, 10, Some(10))) -> 60, // (10 + 10 + 10) + 30
+      List(Frame(10, 0), Frame(10, 10, Some(0))) -> 50, // (10 + 10 + 10) + 20
+      List(Frame(10, 0), Frame(10, 0, Some(10))) -> 40, // (10 + 10 + 0) + 20
+      List(Frame(10, 0), Frame(5, 5, Some(10))) -> 40 // (10 + 5 + 5) + 20
+    )
+  }
+
+  it should "run uncle bobs game correctly" in {
+    Bowling.score(List(
+      Frame(1, 4),
+      Frame(4, 5),
+      Frame(6, 4),
+      Frame(5, 5),
+      Frame(10, 0),
+      Frame(0, 1),
+      Frame(7, 3),
+      Frame(6, 4),
+      Frame(10, 0),
+      Frame(2, 8, Some(6))
+    )) shouldBe 133
+  }
+
+  it should "calculate a perfect game" in {
+    Bowling.score(List(
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 0),
+      Frame(10, 10, Some(10))
+    )) shouldBe 300
+  }
+
 
 
 }

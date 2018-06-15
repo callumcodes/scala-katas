@@ -10,6 +10,7 @@ object Bowling {
   @tailrec
   private def evaluateGame(frames: List[Frame], score: Int): Int = frames match {
     case Nil => score
+    case head :: Nil => evaluateGame(Nil, score + head.total)
     case head :: next :: after :: tail if head.bonus == Strike && next.bonus == Strike =>
       evaluateGame(next :: after :: tail, score + head.total + next.total + after.first)
     case head :: next :: tail if head.bonus == Strike => evaluateGame(next :: tail, score + head.total + next.first + next.second)
